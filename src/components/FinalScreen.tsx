@@ -1,40 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Check, RotateCcw, Share2, Sparkles } from 'lucide-react';
+import { Check, RotateCcw, Share2 } from 'lucide-react';
 import { playPop, playSuccess } from '../utils/sound';
 import { fireConfetti } from '../utils/confetti';
 
 interface FinalScreenProps {
   onRestart: () => void;
 }
-
-interface SiblingVoucher {
-  id: number;
-  title: string;
-  desc: string;
-  emoji: string;
-}
-
-const VOUCHERS: SiblingVoucher[] = [
-  {
-    id: 1,
-    title: "TV Remote Control Rights 📺",
-    desc: "Valid for 1 full week. Brother surrenders remote without complaints!",
-    emoji: "👑",
-  },
-  {
-    id: 2,
-    title: "1x Midnight Maggi Noodles 🍜",
-    desc: "Cooked by brother with extra cheese & spice whenever requested.",
-    emoji: "🧀",
-  },
-  {
-    id: 3,
-    title: "1-Month Argument Immunity 🕊️",
-    desc: "Brother automatically admits 'You were right, sis' in any argument.",
-    emoji: "📜",
-  },
-];
 
 const PHOTOS = [
   {
@@ -107,7 +79,7 @@ export const FinalScreen: React.FC<FinalScreenProps> = ({ onRestart }) => {
           </p>
         </motion.div>
 
-        {/* Section 1: Memory Polaroid Photo Gallery */}
+        {/* Memory Polaroid Photo Gallery */}
         <div className="glass-card rounded-2xl p-4 sm:p-6 border border-rose-200 bg-gradient-to-br from-amber-50/50 to-rose-50/50 shadow-md">
           <div className="flex items-center justify-center gap-2 text-rose-700 font-extrabold text-lg mb-2">
             <span className="text-xl">💀</span>
@@ -155,31 +127,6 @@ export const FinalScreen: React.FC<FinalScreenProps> = ({ onRestart }) => {
               >
                 <img src={p.url} alt="thumbnail" className="w-full h-full object-cover" />
               </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Section 2: Brother Vouchers */}
-        <div className="text-left">
-          <h3 className="font-extrabold text-slate-800 text-lg mb-3 flex items-center gap-2">
-            <span>🎟️ Official Brother Coupon Vouchers:</span>
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {VOUCHERS.map((v) => (
-              <div
-                key={v.id}
-                className="bg-white/80 p-3.5 rounded-2xl border border-amber-200 shadow-sm flex flex-col justify-between hover:border-amber-400 transition-colors"
-              >
-                <div>
-                  <div className="text-2xl mb-1">{v.emoji}</div>
-                  <h4 className="font-bold text-rose-700 text-sm">{v.title}</h4>
-                  <p className="text-xs text-slate-600 mt-1 leading-snug">{v.desc}</p>
-                </div>
-                <div className="mt-3 inline-flex items-center gap-1 text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md self-start border border-emerald-200">
-                  <Check className="w-3 h-3" />
-                  <span>CLAIMED</span>
-                </div>
-              </div>
             ))}
           </div>
         </div>
