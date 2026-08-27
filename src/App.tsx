@@ -5,10 +5,11 @@ import { IntroScreen } from './components/IntroScreen';
 import { QuestionScreen, QUESTIONS } from './components/QuestionScreen';
 import { AfterYesModal } from './components/AfterYesModal';
 import { RakhiProcessScreen } from './components/RakhiProcessScreen';
+import { MithaiScreen } from './components/MithaiScreen';
 import { GiftScreen } from './components/GiftScreen';
 import { FinalScreen } from './components/FinalScreen';
 
-export type AppStage = 'INTRO' | 'QUESTION' | 'AFTER_YES' | 'RAKHI_PROCESS' | 'GIFT' | 'FINAL_MESSAGE';
+export type AppStage = 'INTRO' | 'QUESTION' | 'AFTER_YES' | 'RAKHI_PROCESS' | 'MITHAI' | 'GIFT' | 'FINAL_MESSAGE';
 
 export function App() {
   const [stage, setStage] = useState<AppStage>('INTRO');
@@ -34,6 +35,10 @@ export function App() {
   };
 
   const handleRakhiComplete = () => {
+    setStage('MITHAI');
+  };
+
+  const handleMithaiComplete = () => {
     setStage('GIFT');
   };
 
@@ -83,6 +88,12 @@ export function App() {
           {stage === 'RAKHI_PROCESS' && (
             <motion.div key="rakhi" className="w-full flex justify-center">
               <RakhiProcessScreen onComplete={handleRakhiComplete} />
+            </motion.div>
+          )}
+
+          {stage === 'MITHAI' && (
+            <motion.div key="mithai" className="w-full flex justify-center">
+              <MithaiScreen onComplete={handleMithaiComplete} />
             </motion.div>
           )}
 

@@ -176,8 +176,7 @@ export const RakhiProcessScreen: React.FC<RakhiProcessScreenProps> = ({ onComple
             onClick={handleProceed}
             className="w-full py-4 bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white font-extrabold text-xl rounded-2xl shadow-xl shadow-rose-500/25 flex items-center justify-center gap-3 cursor-pointer"
           >
-            <span>Now where's my gift? 👀</span>
-            <Gift className="w-6 h-6 animate-bounce" />
+            <span>Next: Time for Mithai! 😋🍬 →</span>
           </motion.button>
         </motion.div>
       )}

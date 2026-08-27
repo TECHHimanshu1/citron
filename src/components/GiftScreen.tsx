@@ -54,7 +54,7 @@ export const GiftScreen: React.FC<GiftScreenProps> = ({ onNext }) => {
       {/* Top Stage Indicator */}
       <motion.div initial={{ y: -10, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
         <span className="px-3.5 py-1 rounded-full bg-rose-100 text-rose-800 font-bold text-xs uppercase tracking-wider border border-rose-200">
-          Step 2: The Gift Sequence 🎁
+          Step 3: The Gift Sequence 🎁
         </span>
         <h2 className="font-fredoka text-3xl sm:text-4xl font-extrabold text-rose-600 mt-3 mb-1">
           {giftStage === 'STAGE3_REAL_GIFT' ? "Okay fine... 🎁🥹" : "Okay... your turn! 🎁"}
