@@ -13,11 +13,13 @@ const PHOTOS = [
     url: '/rakhi_2025_1.jpg',
     title: 'Raksha Bandhan Celebration 💀',
     caption: 'The strongest bond and best memories!',
+    hasNativeText: true, // Photo 1 has Raksha Bandhan text
   },
   {
     url: '/rakhi_2018.jpg',
     title: 'Festival Memories 🌸',
     caption: 'Year after year, always smiling together!',
+    overlayText: 'Raksha Bandhan', // Recreated matching Raksha Bandhan text treatment for Photo 2
   },
   {
     url: '/oldourphoto.jpg',
@@ -86,7 +88,7 @@ export const FinalScreen: React.FC<FinalScreenProps> = ({ onRestart }) => {
             <span>Sibling Memory Gallery</span>
           </div>
 
-          {/* Playful Teasing Note */}
+          {/* Playful Teasing Header Note */}
           <div className="mb-5 bg-white/80 border border-amber-300 rounded-2xl p-3.5 sm:p-4 text-slate-700 text-sm sm:text-base font-medium shadow-sm leading-relaxed max-w-lg mx-auto">
             <p className="font-handwriting text-xl sm:text-2xl text-rose-600 font-bold mb-1">
               "We literally have so few photos together... 📸"
@@ -97,13 +99,25 @@ export const FinalScreen: React.FC<FinalScreenProps> = ({ onRestart }) => {
             </p>
           </div>
 
-          {/* Main Active Polaroid */}
+          {/* Main Active Polaroid with Natural Text Overlay for Photo 2 */}
           <div className="relative w-full max-w-sm mx-auto bg-white p-3 pt-3 pb-6 rounded-2xl shadow-xl border border-slate-200">
-            <img
-              src={PHOTOS[activePhotoIdx].url}
-              alt={PHOTOS[activePhotoIdx].title}
-              className="w-full h-56 sm:h-64 object-cover rounded-xl border border-slate-100"
-            />
+            <div className="relative overflow-hidden rounded-xl">
+              <img
+                src={PHOTOS[activePhotoIdx].url}
+                alt={PHOTOS[activePhotoIdx].title}
+                className="w-full h-56 sm:h-64 object-cover border border-slate-100"
+              />
+              
+              {/* Recreated "Raksha Bandhan" text overlay for Photo 2 matching Photo 1 style */}
+              {PHOTOS[activePhotoIdx].overlayText && (
+                <div className="absolute bottom-3 left-3 bg-black/40 backdrop-blur-sm px-3 py-1 rounded-lg border border-amber-300/60 shadow-lg flex items-center gap-1.5 pointer-events-none">
+                  <span className="font-fredoka text-amber-300 font-extrabold text-xs sm:text-sm tracking-wide drop-shadow-md">
+                    {PHOTOS[activePhotoIdx].overlayText} 🏵️
+                  </span>
+                </div>
+              )}
+            </div>
+
             <div className="mt-3 text-center">
               <h4 className="font-bold text-slate-800 text-base">{PHOTOS[activePhotoIdx].title}</h4>
               <p className="text-xs text-rose-500 font-medium">{PHOTOS[activePhotoIdx].caption}</p>
@@ -119,15 +133,28 @@ export const FinalScreen: React.FC<FinalScreenProps> = ({ onRestart }) => {
                   playPop();
                   setActivePhotoIdx(idx);
                 }}
-                className={`w-14 h-14 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
+                className={`relative w-14 h-14 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
                   activePhotoIdx === idx
                     ? 'border-rose-500 scale-110 shadow-md ring-2 ring-rose-300'
                     : 'border-transparent opacity-60 hover:opacity-100'
                 }`}
               >
                 <img src={p.url} alt="thumbnail" className="w-full h-full object-cover" />
+                {p.overlayText && (
+                  <span className="absolute bottom-0 inset-x-0 bg-amber-500/80 text-[8px] font-bold text-white py-0.2 truncate">
+                    Raksha Bandhan
+                  </span>
+                )}
               </button>
             ))}
+          </div>
+
+          {/* Playful Teasing Line AFTER the 3 Photos */}
+          <div className="mt-5 pt-3 border-t border-rose-200/60 text-center">
+            <p className="font-fredoka text-base sm:text-lg text-rose-600 font-bold leading-snug">
+              “Literally itne hi photos hai humare saath 😭<br />
+              <span className="text-amber-700 font-extrabold">Aur woh bhi almost saare Raksha Bandhan ke 😂”</span>
+            </p>
           </div>
         </div>
 
