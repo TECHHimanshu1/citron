@@ -32,13 +32,9 @@ export const MithaiScreen: React.FC<MithaiScreenProps> = ({ onComplete }) => {
           Step 2: Mithai Time 😋🍬
         </span>
         
-        <h2 className="font-fredoka text-3xl sm:text-4xl font-extrabold text-rose-600 mt-3 mb-2 leading-tight">
+        <h2 className="font-fredoka text-3xl sm:text-4xl font-extrabold text-rose-600 mt-3 mb-4 leading-tight">
           “aa dee mithaii khilaa… 😋🍬”
         </h2>
-        
-        <p className="text-slate-600 font-medium text-base sm:text-lg mb-4">
-          Come on, feed your brother some sweets first! 😂❤️
-        </p>
       </motion.div>
 
       {/* Dedicated Mithai GIF Container (/mithai.gif) */}
